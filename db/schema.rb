@@ -14,9 +14,11 @@ ActiveRecord::Schema.define(version: 20190914183057) do
 
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "group_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_users_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_group_users_on_user_id", using: :btree
   end
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -41,4 +43,5 @@ ActiveRecord::Schema.define(version: 20190914183057) do
   end
 
   add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
 end
