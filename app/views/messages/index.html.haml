@@ -6,13 +6,15 @@
     .header
       .left-header
         .left-header__title
-          SAMPLE
+          グループ名
         %ul.left-header__members
-          Member:
+          Member：
           %li.member
-            Member
+            メンバー名
           %li.member
-            Member
+            メンバー名
+          %li.member
+            メンバー名
       .right-header
         .right-header__button
           Edit
@@ -22,20 +24,28 @@
           .upper-message__user-name
             メンバー
           .upper-message__date
-            2019/9/13
-        .lower-message
+            2017/04/04
+        .lower-meesage
           .lower-message__content
-            Hello World!
+            メッセージ
       .message
         .upper-message
           .upper-message__user-name
             メンバー
           .upper-message__date
-            2019/8/16
-        .lower-message
+            2017/04/04
+        .lower-meesage
           .lower-message__content
-            Good Night!      
-              
+            メッセージ
+      .message
+        .upper-message
+          .upper-message__user-name
+            メンバー
+          .upper-message__date
+            2017/04/04
+        .lower-meesage
+          .lower-message__content
+            メッセージ
     .form
       %form
         %input.form__message
@@ -43,4 +53,4 @@
           %label.form__mask__image
             = fa_icon 'picture-o', class: 'icon'
             %input.hidden{type: 'file'}
-        %input.form__submit{type: 'submit', value: 'Send'}    
+        %input.form__submit{type: 'submit', value: 'Send'}
