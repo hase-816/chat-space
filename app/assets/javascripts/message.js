@@ -39,6 +39,7 @@ $(document).on('turbolinks:load', function(){
       $('.messages').append(html);
       $('#message_content').val('');
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight },1000);
+      $('form')[0].reset();
     })
     .fail(function(){
       alert('Error');
