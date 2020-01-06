@@ -1,8 +1,8 @@
-$(document).on('turbolinks:load', function(){
+$(document).on('turbolinks:load', function(){ 
   function buildmessage(message){
     var content = message.content ? `${message.content}`: "";
     var img = message.image ? `<img src= ${message.image}>` : "";
-    var html = `<div class="message" data-id="${message.id}">
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                     ${message.user_name}
@@ -48,4 +48,32 @@ $(document).on('turbolinks:load', function(){
       $('.form__submit').prop('disabled', false);
     })
   })
+
+  var reloadMessages = function(){
+    if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+  }
+    last_message_id = $('.message:last').data("message-id");
+    $.ajax ({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages){
+      if (messages.length !== 0) {
+        var insertHTML = '';
+        $.each(messages, function(i, message){
+        insertHTML += buildmessage(message)
+        });
+        $('.messages').append(insertHTML);
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+        $("#new_message")[0].reset();
+        $(".form__submit").prop("disabled", false);
+      }
+    })
+    .fail(function(){
+      alert('error');
+    });
+  };
+  setInterval(reloadMessages, 7000);
 });
