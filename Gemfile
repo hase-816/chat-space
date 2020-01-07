@@ -63,5 +63,9 @@ group :development, :test, :production do
   gem 'devise'
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 gem 'carrierwave'
 gem 'mini_magick'
