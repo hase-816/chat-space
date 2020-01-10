@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function(){
                     ${message.user_name}
                     </div>
                     <div class="upper-message__date">
-                    ${message.date}
+                    ${message.created_at}
                     </div>
                   </div>
                   <div class="lower-message">
@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function(){
 
   var reloadMessages = function(){
     if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-  }
+  
     last_message_id = $('.message:last').data("message-id");
     $.ajax ({
       url: "api/messages",
@@ -75,5 +75,6 @@ $(document).on('turbolinks:load', function(){
       alert('error');
     });
   };
+  }
   setInterval(reloadMessages, 7000);
 });
