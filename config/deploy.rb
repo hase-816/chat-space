@@ -43,6 +43,7 @@ namespace :deploy do
   task :stop do
     invoke 'unicorn:stop'
   end
+  
   task :start do
     invoke 'unicorn:start'
   end
